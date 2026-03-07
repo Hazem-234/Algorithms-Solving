@@ -1,24 +1,18 @@
 #include <iostream>
-#include <algorithm>
-#include <vector>
 using namespace std;
 
-// It is the same as the Fibonacci Sequence
-
-int Climbing(int N)
-{
-    if(N==1)
-    return 1;
-    if(N==2)
-    return 2;
-    return Climbing(N-1) +Climbing(N-2);
+long long ClimbUnlimited(int n) {
+    if(n == 0) return 1;
+    long long total = 0;
+    for(int i = 1; i <= n; i++) {
+        total += ClimbUnlimited(n-i);
+    }
+    return total;
 }
-int main()
-{
-    int N;
-    cin>>N;
-    cout<<Climbing(N);
-    system("pause");
 
+int main() {
+    int n;
+    cin >> n;
+    cout << ClimbUnlimited(n) << endl;
     return 0;
 }
